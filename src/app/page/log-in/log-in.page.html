@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title class="tittleText">Car List</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="medium">
+
+    <ion-card>
+        <ion-item *ngFor="let item of itemList" (click)="onSelect(item)">
+            <ion-icon name="car" slot="start"></ion-icon>
+            <ion-label>{{item.Brand}}&nbsp;{{item.Model + ' :'}}&nbsp;{{item.Year}}</ion-label>
+            <ion-button fill="outline" slot="end" (click)="onDelete(item.key)">Del</ion-button>
+        </ion-item>
+    </ion-card>
+
+    <ion-button fill="solid" expand="block" color="dark" (click)="onAdd()">Add Item!</ion-button>
+</ion-content>

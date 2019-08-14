@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title class="titleText">Item Add</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+
+    <ion-card>
+        <ion-item>
+            <ion-label position="floating">brand:</ion-label>
+            <ion-input type="text" [(ngModel)]="item.Brand"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">model:</ion-label>
+            <ion-input type="text" [(ngModel)]="item.Model"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">year:</ion-label>
+            <ion-input type="text" [(ngModel)]="item.Year"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-button fill="outline" slot="end" (click)="submit()">Submit</ion-button>
+        </ion-item>
+    </ion-card>
+
+</ion-content>
