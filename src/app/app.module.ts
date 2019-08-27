@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { LogInPage } from './page/log-in/log-in.page';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBCvK_fdvRtLZbBOnNNjf0W91edwLW8v5Y",
@@ -22,7 +23,7 @@ const firebaseConfig = {
   appId: "1:145883827482:web:c69487b4440643b6"
 };
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,LogInPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(firebaseConfig),AngularFirestoreModule, AngularFireAuthModule],
   providers: [
