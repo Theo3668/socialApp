@@ -48,8 +48,5 @@ export class HomePage {
     }
   }
 
-  onSignIn(){
-    this.route.navigateByUrl("sign-in")
-  }
 
 }

@@ -1,10 +1,10 @@
 <ion-header>
-    <ion-toolbar color="primary">
-        <ion-title class="tittleText">Car List</ion-title>
-    </ion-toolbar>
+    <!-- <ion-toolbar class="tittleText">
+        <ion-title>Profile</ion-title>
+    </ion-toolbar> -->
 </ion-header>
 
-<ion-content padding color="medium">
+<ion-content>
 
     <!-- <ion-card>
         <ion-item *ngFor="let item of itemList" (click)="onSelect(item)">
@@ -15,21 +15,20 @@
     </ion-card>
 
     <ion-button fill="solid" expand="block" color="dark" (click)="onAdd()">Add Item!</ion-button> -->
-    <ion-tabs>
-        <ion-tab-bar slot="bottom" color="tertiary">
-            <ion-tab-button tab="edit">
-                <ion-icon name="contacts"></ion-icon>
-                <ion-label>Profile</ion-label>
-                <ion-badge>6</ion-badge>
-            </ion-tab-button>
+    <div class="login-wrap login-html">
+        <ion-tabs color="light">
+            <ion-tab-bar slot="bottom">
+                <ion-tab-button tab="add-item">
+                    <ion-icon md="md-person"></ion-icon>
+                    <ion-label>Profile</ion-label>
+                </ion-tab-button>
 
-            <ion-tab-button tab="add-item">
-                <ion-icon name="contact"></ion-icon>
-                <ion-label>Contact</ion-label>
-            </ion-tab-button>
-
-
-
-        </ion-tab-bar>
-    </ion-tabs>
+                <ion-tab-button tab="edit">
+                    <ion-icon name="paper"></ion-icon>
+                    <ion-label>Feeds</ion-label>
+                    <ion-badge>6</ion-badge>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
+    </div>
 </ion-content>
