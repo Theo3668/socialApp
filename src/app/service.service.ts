@@ -9,8 +9,14 @@ export class ServiceService {
   list;
   writePost;
   private itemDoc: AngularFirestoreDocument<Cars>; 
+  private usersDoc: AngularFirestoreDocument<Users>;
   
   constructor(private dataFire: AngularFirestore) { }
+
+  // retrieve users
+  getUser(){
+    return this.dataFire.collection('users').snapshotChanges();
+  }
 
   // retrieve list
   getItem(){
