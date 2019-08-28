@@ -6,9 +6,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
 
-  { path: 'log-in', component: LogInPage, children:[{ path: 'sign-in', loadChildren: './page/sign-in/sign-in.module#SignInPageModule' },
-                                                    { path: 'add-item', loadChildren: './page/add-item/add-item.module#AddItemPageModule' },
-                                                    { path: 'edit', loadChildren: './page/edit/edit.module#EditPageModule' },]},
+  { path: 'log-in', component: LogInPage, children:[{ path: 'feeds', loadChildren: './page/feeds/feeds.module#FeedsPageModule' },
+                                                    { path: 'profile', loadChildren: './page/profile/profile.module#ProfilePageModule' },]},
+  
+
   
 ];
 

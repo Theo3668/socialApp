@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-home',
@@ -10,18 +11,20 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  email: string = ""
-  password: string = ""
-  confirmPassword: string = ""
+  // email: string = ""
+  // password: string = ""
+  // confirmPassword: string = ""
 
-  constructor(private fireAuth: AngularFireAuth, private route:Router) {}
+  users = {} as Users;
 
-  async login(){
-    const { email, password } = this
+  constructor(private fireAuth: AngularFireAuth, private angularFire: AngularFirestore,private route:Router) {}
+
+  async login(users:Users){
+    // const { email, password } = this
     try{
-      const result = await this.fireAuth.auth.signInWithEmailAndPassword(email, password)
+      const result = await this.fireAuth.auth.signInWithEmailAndPassword(users.email, users.password)
       this.fireAuth.auth.currentUser.uid  
-      this.route.navigateByUrl("log-in")
+      this.route.navigateByUrl("log-in/profile")
     } catch(err) {
       console.dir(err)
       if(err.code === "auth/invalid-email"){
@@ -30,16 +33,21 @@ export class HomePage {
     }
   }
 
-  async signIn(){
-    const { email, password, confirmPassword } = this
-    if(password !== confirmPassword){
+  async signIn(users:Users){
+    // const { confirmPassword, password } = this
+    if(users.password !== users.confirmPassword){
         return console.error("passwords don't match")
     }
 
     try{
-      const results = await this.fireAuth.auth.createUserWithEmailAndPassword(email, password)
+      const results = await this.fireAuth.auth.createUserWithEmailAndPassword(users.email, users.password)
+      .then(data => {return this.angularFire.collection('users').doc(data.user.uid).set({
+        userName: users.userName,
+        fullName: users.fullName,
+        gender: users.gender,
+      })})
       console.log(results)
-      this.route.navigateByUrl("home")
+      location.reload();
     } catch(err){
       console.dir(err)
       if(err.code === "auth/weak-password"){
